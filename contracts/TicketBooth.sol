@@ -11,33 +11,23 @@ import "./Tickets.sol";
 
 
 contract TicketBooth is TerminalUtility, Operatable, ITicketBooth {
-    // --- public immutable stored properties --- //
-
-    /// @notice The Projects contract which mints ERC-721's that represent project ownership and transfers.
+    
     IProjects public immutable override projects;
 
-    // --- public stored properties --- //
-
-    // Each project's ERC20 Ticket tokens.
+    
     mapping(uint256 => ITickets) public override ticketsOf;
 
     // Each holder's balance of staked Tickets for each project.
-    mapping(address => mapping(uint256 => uint256))
-        public
-        override stakedBalanceOf;
+    mapping(address => mapping(uint256 => uint256)) public override stakedBalanceOf;
 
     // The total supply of 1155 tickets for each project.
     mapping(uint256 => uint256) public override stakedTotalSupplyOf;
 
     // The amount of each holders tickets that are locked.
-    mapping(address => mapping(uint256 => uint256))
-        public
-        override lockedBalanceOf;
+    mapping(address => mapping(uint256 => uint256)) public override lockedBalanceOf;
 
     // The amount of each holders tickets that are locked by each address.
-    mapping(address => mapping(address => mapping(uint256 => uint256)))
-        public
-        override lockedBalanceBy;
+    mapping(address => mapping(address => mapping(uint256 => uint256))) public override lockedBalanceBy;
 
     // --- external views --- //
 
