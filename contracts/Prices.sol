@@ -13,12 +13,7 @@ contract Prices is IPrices, Ownable {
 
     mapping(uint256 => AggregatorV3Interface) public override feedFor;
 
-    function getETHPriceFor(uint256 _currency)
-        external
-        view
-        override
-        returns (uint256)
-    {
+    function getETHPriceFor(uint256 _currency) external view override returns (uint256) {
         if (_currency == 0) return 10**targetDecimals;
 
         AggregatorV3Interface _feed = feedFor[_currency];
@@ -34,11 +29,7 @@ contract Prices is IPrices, Ownable {
     }
 
     
-    function addFeed(AggregatorV3Interface _feed, uint256 _currency)
-        external
-        override
-        onlyOwner
-    {
+    function addFeed(AggregatorV3Interface _feed, uint256 _currency) external override onlyOwner{
         require(_currency > 0, "Prices::addFeed: RESERVED");
 
         require(
