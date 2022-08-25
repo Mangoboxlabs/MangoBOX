@@ -76,25 +76,7 @@ contract YearnYielder is IYielder, Ownable {
         IERC20(weth).safeApprove(address(wethVault), type(uint256).max);
     }
 
-    /// @dev Computes the number of tokens an amount of shares is worth.
-    ///
-    /// @param _sharesAmount the amount of shares.
-    ///
-    /// @return the number of tokens the shares are worth.
-    function _sharesToTokens(uint256 _sharesAmount)
-        private
-        view
-        returns (uint256)
-    {
-
-
-        return
-            PRBMath.mulDiv(
-                _sharesAmount,
-                wethVault.pricePerShare(),
-                10**decimals
-            );
-    }
+   
 
     /// @dev Computes the number of shares an amount of tokens is worth.
     ///
